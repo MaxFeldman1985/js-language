@@ -19,6 +19,24 @@ function calculate (num1,num2,action){
     console.log(cal_2);
     console.log(cal_3);
     console.log(cal_4);
-    
+function calculator(op1,op2,compute){
+    return compute(op1,op2);
+}
+function sum(op1,op2){
+    return op1 + op2;
+}
+    console.log('2.', calculator(a,b,sum));
    
 // 3.write any example for running the following expression fun(5)(10,3);
+function fun(index) {
+    if(index == 5){
+        return function(a,b){
+            return a + b;
+        }
+    }else {
+        return function(a,b){
+            return a - b;
+        }
+    }
+}
+console.log('3. ', fun(5)(10,3));
