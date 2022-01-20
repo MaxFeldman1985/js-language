@@ -1,43 +1,40 @@
 const arHw = [13, 28, 4, 15, 25, -10, 40, 17, 27];
-function pickIt(arHw){
-    const odd=[], even=[];
-    for(let i = 0; i < arHw.length; i++){
-        if(arHw[i]%2 !== 0){
-    
-            even.push(arHw[i]);
-            even.sort((a,b) => b - a);
-        }else{
-            odd.push(arHw[i]);
-            odd.sort((a,b) => a - b);
-        }
-        
+const comparator = (n1, n2)=> {
+    let res = n1 % 2 - n2 % 2;
+    if(res == 0) {
+        res = n1 % 2 == 0 ? n1 - n2 : n2 - n1;
     }
-    const result = [...odd, ...even];
-    
-    console.log(result);
+    return res;
 }
-pickIt(arHw);
+arHw.sort(comparator);
+console.log(arHw);
  
 
 
 
 const matrix = [[1,2], [3,4], [5,6]];
 function matrixTransp(matrix){
-    let newArr = [];
-    for (let i = 0; i < matrix.length; i++){
-        newArr.push([])
+    const res = [];
+    for (let i = 0; i < matrix[0].length; i++){
+        res.push([]);
     };
-      for(let i = 0; i < matrix.length; i++){
+      for(let j = 0; j < matrix.length; j++){
           for(let j = 0; j < matrix.length; j++){
-              newArr[j].push(matrix[i][j]);
-          };
-      };
-      
-      console.log(newArr);
-}; 
+              res[i].push(matrix[j][i]);
+          }
+      }
+      return res;
+        }
+        displayMatrix(matrixTransp([[1,2],[3,4],[5,6]]));
+       /* function displayMatrix(Matrix) {
+            for (let i = 0; i < Matrix.length; i++){
+                let row = '';
+              for(let j = 0; j < Matrix[i].length; j++){
+                  row = row + Matrix[i][j] + '  ';
+              }
+              console.log(row);
+            };
+        }
 
+displayMatrix(res);*/
 matrixTransp(matrix);
-
-
-
-

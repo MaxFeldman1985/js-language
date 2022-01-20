@@ -1,4 +1,4 @@
-/***************************Arrays */
+/***************************Arrays 
 const ar = [2, 100, 9, 80];
 /*ar.sort(function (a, b){
     return a - b;
@@ -37,13 +37,14 @@ let el = ar.pop();// remove the last element and return it
 //el = -57; -57 will be removed from array ar
 el = ar.shift();//removes the first element and return it
 //el = 27; 27 will be removed from array
-console.log(el, ar);
-ar.splice(3, 5); //remove 5 elements beginning from the one at index 3
-console.log(ar);
+//console.log(el, ar);//ar.splice(3, 5); //remove 5 elements beginning from the one at index 3
+//console.log(ar);
 //includes, indexOf
 //two demensional arrays
 const matrix1 = [[1, 2, 3],[4, 5, 6], [7, 8, 9], [3, 4, 5]];
 const matrix2 = [[100,20], [50, -5], [34,28]];
+
+
 function displayMatrix(matrix) {
     for (let i = 0; i < matrix.length; i++){
         let row = '';
@@ -51,8 +52,6 @@ function displayMatrix(matrix) {
           row = row + matrix[i][j] + '  ';
       }
       console.log(row);
-}
-}
 displayMatrix(matrix1);
 /***************HM12 definition */
 //write function
@@ -62,3 +61,4 @@ function matrixTransp(matrix){
     //example: source matrix [[1,2], [3,4], [5,6]]
     // result matrix [[1,3,5], [2,4,6]] 
 }
+    }
