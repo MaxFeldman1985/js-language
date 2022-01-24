@@ -1,35 +1,31 @@
-const ar = [-10, 50, -7, 80,40];
-ar.push(70);
-//str - "-10#50#-12#80#40#70#"
-/*******solution based on substring */
-//let str = '';
-//ar.forEach(function(n){
-//    str += n + '#';
-//})
-//str = str.substring(0, str.length - 1);
-/*const lastSharpIndex = str.lastIndexOf('#');
-const str1 = str.substring(0, str.lastIndexOf('#'));
-const str2 = str.substring(lastSharpIndex + 1);
-str = str1 + str2;*/
-/*******solution based on forEach from second number */
-/*const ar1 = ar.slice(1);
-let str = '' + ar[0];
-ar1.forEach(n=> str += '#' + n);
-console.log(str);*/
-/****************printing out sequense nymber of element, element and length of arry  */
-//1 of 5 - -10; ...
-ar.forEach((n, i, a) => console.log(`${i+1} of ${a.length} - ${n}`));
-/****************HW#13 task1 defenition */
-//write function myForEach(array, callback-function);
-//array - being interated array
-//callback-function - function that will be called for each element of array
-//callback-function should take arguments: current element, curent index, being interated array
-// example of standart forEach: ar1.forEach(n=> str += '#' + n);
-//example of myForEach: myForEach(array, n=> str += '#' + n);
-
-/*********************************************** */
-//method "map"
-//use case of applying method map: you eant to create new array with element that are recived as ewsult
-const ar2 = ar.map(n => n * 2);
-console.log(ar2);
-const ar3 = ar.map(n => "")
+/*************Objects */
+const person1 = {id: 123, name: 'Moshe', address: {city: 'Lod', street: 'Sokolov'}};
+const person2 = {id: 123, name: 'Moshe', address: {city: 'Lod', street: 'Sokolov'}};
+const person3 = person1;
+console.log(`person1 == person2 is ${person1 == person2}`);
+console.log(`"123" == 123 is ${"123" == 123}`);
+console.log(`"123" === 123 is ${"123" === 123}`);
+console.log(`person1 == person3 is ${person1 == person3}`);
+console.log(`JSON.stringify(person1) === JSON.stringify(person2) is ${JSON.stringify(person1) == JSON.stringify(person2)}`);
+console.log(JSON.stringify(person1));
+console.log(person1.toString());
+console.log(`name of person1 is ${person1.name}`);
+console.log(`person1 lives in city ${person1.address.city}`);
+Object.keys(person1).forEach(k => console.log(k)); // array of the object keys
+Object.values(person1).forEach(v => console.log(v));//array of the object values
+Object.entries(person1).forEach(e => console.log(e)); //array of arrays
+function createrAddress(citi, street) {
+    return {city, street}
+}
+function createPerson(id, name, address) {
+    return {id, name, address};
+}
+const persons = [
+    createPerson(123,"Vasya", createrAddress("Rehovot", "Parshani")),
+    createPerson(124,"Olya", createrAddress("Rehovot", "Plaut")),
+    createPerson(125,"Tolya", createrAddress("Tel-Aviv", "Dizengoff")),
+]
+/*****************************HW 14 definition task3 */
+//TODO applying methods of arrays you should find the persons living in Rehovot and display them
+/**************************************HW 14 definition task 4 */
+//TODO move the persons that don't live in Rehovot at begining of the array persons 
