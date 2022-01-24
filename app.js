@@ -28,9 +28,8 @@ ar.forEach((n, i, a) => console.log(`${i+1} of ${a.length} - ${n}`));
 //example of myForEach: myForEach(array, n=> str += '#' + n);
 
 /*********************************************** */
-const arr = [-15,8,22,85,1,56,13,-4];
-function myForEach(arr, function(n,i,arr) {
-    let str = " ";
-    str += "number"n + "index" i + "array" arr.length;  
-    
-});
+//method "map"
+//use case of applying method map: you eant to create new array with element that are recived as ewsult
+const ar2 = ar.map(n => n * 2);
+console.log(ar2);
+const ar3 = ar.map(n => "")
