@@ -31,5 +31,12 @@ const persons = [
 //TODO move the persons that don't live in Rehovot at begining of the array persons 
 
 function personsRehovot(ar,callback){
-    
+    const res = [];
+    for(let i=0; i < ar.length; i++){
+        if(callback(ar[i]) == true)
+        {
+            res.push(ar[i])
+        }
+    }
+    return res;
 }
