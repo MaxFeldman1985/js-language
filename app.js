@@ -14,7 +14,7 @@ console.log(`person1 lives in city ${person1.address.city}`);
 Object.keys(person1).forEach(k => console.log(k)); // array of the object keys
 Object.values(person1).forEach(v => console.log(v));//array of the object values
 Object.entries(person1).forEach(e => console.log(e)); //array of arrays
-function createrAddress(citi, street) {
+function createrAddress(city, street) {
     return {city, street}
 }
 function createPerson(id, name, address) {
@@ -29,3 +29,7 @@ const persons = [
 //TODO applying methods of arrays you should find the persons living in Rehovot and display them
 /**************************************HW 14 definition task 4 */
 //TODO move the persons that don't live in Rehovot at begining of the array persons 
+
+function personsRehovot(ar,callback){
+    
+}
