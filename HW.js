@@ -23,21 +23,47 @@ myForEach(arr, n => console.log(n));
 const array = myMap(arr, mapper);
 console.log(array);
 /***********************************************************cw 14 */
-const ar20 = [13,17,20,23,2,40];
+/*const ar20 = [13,17,20,23,2,40];
 const arEvenOdd = ar20.filter((n, i, a) =>a.length % 2 == 0 ? n % 2 == 0 : n % 2 ==1);
-console.log(arEvenOdd);
+console.log(arEvenOdd);*/
 /************************************HW 14 definition task 1 */
 // TODO write myFilter(array, callback) based on myForEach
 //callback - function with three possible parametrs: cur.element, cur.index, reference of array
 /************************************************************ */
-const res = ar20.reduce((res, cur) => res + cur, 0);
+/*const res = ar20.reduce((res, cur) => res + cur, 0);
 console.log(res);
 const max = ar20.reduce((max, cur)=>cur > max ? cur : max, ar20[0]);
 console.log(max);
-console.log(res1);
+const res1 = ar20.reduce((res, cur) => res + cur);
+console.log(res1);*/
 //reduce with no second argument
-res1 = ar20.reduce((res, cur) => res + cur);
+
 // TODO write myReduce(array, callback, initialResult) based on myForEach
 //callback - function with three possible parametrs: cur.element, cur.index, reference of array
 //if the user call doesn't contain a second argument, then the first element of the array will be 
 //considered as initial result
+
+function myFilter(ar,callback) {
+    const res = [];
+    for(let i=0; i < ar.length; i++){
+        if(callback(ar[i]) == true)
+        {
+            res.push(ar[i])
+        }
+    }
+    return res;
+} 
+const result = myFilter(arr,(n) => n >= 0);
+console.log(result);
+
+function myReduce (ar,callback, initialResult){
+    const res = [];
+    initialResult = 0;
+        function forEachCall(n, i, a) {
+            res.push(callback(n, i, a));
+         }
+         myForEach(ar, forEachCall);
+         return res;
+         }
+    myReduce(arr,((res, cur) => res + cur, 0), 0 );
+
