@@ -1,5 +1,5 @@
 /*************Objects */
-const person1 = {id: 123, name: 'Moshe', address: {city: 'Lod', street: 'Sokolov'}};
+/*const person1 = {id: 123, name: 'Moshe', address: {city: 'Lod', street: 'Sokolov'}};
 const person2 = {id: 123, name: 'Moshe', address: {city: 'Lod', street: 'Sokolov'}};
 const person3 = person1;
 console.log(`person1 == person2 is ${person1 == person2}`);
@@ -30,13 +30,68 @@ const persons = [
 /**************************************HW 14 definition task 4 */
 //TODO move the persons that don't live in Rehovot at begining of the array persons 
 
-function personsRehovot(ar,callback){
-    const res = [];
-    for(let i=0; i < ar.length; i++){
-        if(callback(ar[i]) == true)
-        {
-            res.push(ar[i])
+/*function personsRehovot(persons,city)
+{
+    return persons.filter(p => p.address.city === city);
+}
+console.log(personsRehovot(persons, 'Rehovot'));
+/*function movePersonsNoCityAtBegining(persons, city){
+    const personsRes = getPersonsCity(persons, city);
+    personsRes.unshift(...persons.filter(p => p.address.city !== city));
+    return personsRes;
+}
+console.log(movePersonsNoCityAtBegining(persons, 'Rehovot'));*/
+
+/*****************************cw 15*********** */
+//input : ["lmn", "Yaichko" , "d", "lmn", "a" ,"lmn", "a","d"]
+//output: lmn -> 3
+//          a -> 2
+//          d -> 2
+//    Yaichko -> 1
+function displayOccurences(ar){
+    //creating object with key - unique element of array(string as a an element of array)
+    //                     value - occurrences count 
+    //difference between obj = {a: 123, d: "abc"}; const a = "d" ; obj.a === 123
+    //and obj[a] === "abc"
+    //obj.c = 10 -> {a: 123, d: "abc", c: 10}
+    const res = {};
+    for(let i = 0; i < ar.length; i++){
+        if(res[ar[i]] === undefined){
+            //string as content of array[i] occures first time
+            res[ar[i]] = 1;
+        }else{
+            res[ar[i]] = res[ar[i]] + 1;
         }
     }
-    return res;
+    //console.log(res); -> intermedate debug log
+    Object.entries(res).sort((e1, e2) => {
+        const res = e2[1] - e1[1];
+        return res === 0 ? e1[0].localeCompare(e2[0]) : res;
+    }).forEach(e => console.log(`${e[0]} -> ${e[1]}`))
+
 }
+const ar = ["lmn", "Yaichko" , "d", "lmn", "a" ,"lmn", "a","d"];
+displayOccurences(ar);
+/****************************************HW #15 task 1 */
+//refactoring of displayOccurences 
+//lines from 57 to 65 should be a separated function
+//that separated function should apply standard methods like reduce
+
+/**********************************************task 2 */
+//write useful function countBy(ar,callbackFunction) that returns object with
+// keys as grouping  criteria and values as the occurrence counts
+// keys should be sorted (optional)
+//where array - any array, callbackFunction - function returning grouping criteria
+// examples:
+//const arr = [6.4, 7.3, 6.5, 6.9];
+//const statistics = countBy(arr, element => Math.floor(element))
+//result: statistics -> {"6": 3, "7": 1}
+//example 2:
+// const arr = ['abcd', 'lmnr', 'ab', 'dddd'];
+//const statistics = countBy(arr, element => element.lenhth)
+//result: statistics -> {"4": 3, "2": 1}
+//example 3
+//const arr = [{age: 25, id: 123, name:'Artur'},{age: 22, id: 123, name:'Artur'},
+//{age: 35, id: 123, name:'Artur'},{age: 25, id: 123, name:'Artur'}]
+//const statistics = countBy(arr, element -> element.age)
+//result statistics -> {"25: 2, "35":1, "22":1}
