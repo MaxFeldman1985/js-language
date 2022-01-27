@@ -43,27 +43,39 @@ console.log(res1);*/
 //if the user call doesn't contain a second argument, then the first element of the array will be 
 //considered as initial result
 
-function myFilter(ar,callback) {
+function myFilter(ar,callbackP) {
     const res = [];
-    for(let i=0; i < ar.length; i++){
-        if(callback(ar[i]) == true)
-        {
-            res.push(ar[i])
+    /*function forEachCallback(n, i, a){
+        if(callbackP(n, i, a)){
+            res.push(n);
         }
-    }
+    }*/
+    myForEach(ar, (n, i, a) => callbackP(n,i,a) && res.push(n) );
     return res;
 } 
-const result = myFilter(arr,(n) => n >= 0);
+const result = myFilter(arr,(n, i, a) => a.length % 2 == 0 ? n % 2 == 0 : n % 2 == 1);
 console.log(result);
 
-function myReduce (ar,callback, initialResult){
-    const res = [];
-    initialResult = 0;
-        function forEachCall(n, i, a) {
-            res.push(callback(n, i, a));
-         }
-         myForEach(ar, forEachCall);
-         return res;
-         }
-    myReduce(arr,((res, cur) => res + cur, 0), 0 );
-
+function myReduce (ar,callbackReduce, initialResult){
+    if (initialResult == undefined) {
+        initialResult = ar[0];
+        ar = ar.slice(1);
+    }
+    let res = initialResult;
+    /*function forEachCallback(n,i,a) {
+        res = callbackReduce(res,n,i,a);
+    }*/
+    myForEach(ar, (n,i,a)=> res = callbackReduce(res, n, i, a));
+    return res;
+ }
+    
+  let res = myReduce(arr,(res,cur) => res + cur,0);
+  console.log(res);
+  let max = myReduce(arr,(max,cur)=>cur > max ? cur : max, arr[0]);
+  console.log(max);  
+  
+  
+  let res1 = myReduce(arr,(res,cur) => res + cur);
+  console.log(res1);
+  let max1 = myReduce(arr,(max,cur)=>cur > max ? cur : max);
+  console.log(max1); 
