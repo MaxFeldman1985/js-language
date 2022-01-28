@@ -49,11 +49,7 @@ console.log(movePersonsNoCityAtBegining(persons, 'Rehovot'));*/
 //          d -> 2
 //    Yaichko -> 1
 function displayOccurences(ar){
-    //creating object with key - unique element of array(string as a an element of array)
-    //                     value - occurrences count 
-    //difference between obj = {a: 123, d: "abc"}; const a = "d" ; obj.a === 123
-    //and obj[a] === "abc"
-    //obj.c = 10 -> {a: 123, d: "abc", c: 10}
+    
     const res = {};
     for(let i = 0; i < ar.length; i++){
         if(res[ar[i]] === undefined){
@@ -63,6 +59,7 @@ function displayOccurences(ar){
             res[ar[i]] = res[ar[i]] + 1;
         }
     }
+
     //console.log(res); -> intermedate debug log
     Object.entries(res).sort((e1, e2) => {
         const res = e2[1] - e1[1];
@@ -95,3 +92,22 @@ displayOccurences(ar);
 //{age: 35, id: 123, name:'Artur'},{age: 25, id: 123, name:'Artur'}]
 //const statistics = countBy(arr, element -> element.age)
 //result statistics -> {"25: 2, "35":1, "22":1}
+function displayOccurences(ar){
+    const res = {};
+   /* for(let i = 0; i < ar.length; i++){
+        if(res[ar[i]] === undefined){
+            //string as content of array[i] occures first time
+            res[ar[i]] = 1;
+        }else{
+            res[ar[i]] = res[ar[i]] + 1;
+        }
+    }*/
+    res = ar.reduce(ar,(max,cur) => cur === undefined ?  )
+    Object.entries(res).sort((e1, e2) => {
+        const res = e2[1] - e1[1];
+        return res === 0 ? e1[0].localeCompare(e2[0]) : res;
+    }).forEach(e => console.log(`${e[0]} -> ${e[1]}`))
+
+}
+const ar = ["lmn", "Yaichko" , "d", "lmn", "a" ,"lmn", "a","d"];
+displayOccurences(ar);
