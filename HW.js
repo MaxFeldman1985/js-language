@@ -3,8 +3,8 @@
 //refactoring of displayOccurences 
 //lines from 57 to 65 should be a separated function
 //that separated function should apply standard methods like reduce
-  function displayOccurences(ar) {
-    const res = {};
+  //function displayOccurences(ar) {
+    //const res = {};
     /*for(let i = 0; i < ar.length; i++){
          if(res[ar[i]] === undefined){
              //string as content of array[i] occures first time
@@ -43,10 +43,12 @@ displayOccurences(ar);
 //const statistics = countBy(arr, element -> element.age)
 //result statistics -> {"25: 2, "35":1, "22":1}
   
-function countBy(ar,callbackF){
-    const occurrences = [];
-    ar.reduce(function (acc, curr) {
-        return acc[curr] ? ++acc[curr] : acc[curr] = 1, acc
-      }, {});
-    return console.log(occurrences);
-    }
+function countBy (ar,callbackFunctionC){
+const occurrences = ar.reduce(callbackFunctionC(acc, curr), {
+    return: acc[curr] ? ++acc[curr] : acc[curr] = 1, acc
+  }, {});
+  
+  console.log(occurrences);
+}
+const arr1 = [6.4, 7.3, 6.5, 6.9];
+countBy(arr1);
