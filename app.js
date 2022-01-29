@@ -102,7 +102,7 @@ function displayOccurences(ar){
             res[ar[i]] = res[ar[i]] + 1;
         }
     }*/
-    res = ar.reduce(ar,(max,cur) => cur === undefined ?  )
+    res = ar.reduce((res,i) => res[ar[i]] === undefined ? res[ar[i]] == 1 : res[ar[i]] = res[ar[i]] + 1);
     Object.entries(res).sort((e1, e2) => {
         const res = e2[1] - e1[1];
         return res === 0 ? e1[0].localeCompare(e2[0]) : res;
