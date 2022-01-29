@@ -43,12 +43,21 @@ displayOccurences(ar);
 //const statistics = countBy(arr, element -> element.age)
 //result statistics -> {"25: 2, "35":1, "22":1}
   
-function countBy (ar,callbackFunctionC){
-const occurrences = ar.reduce(callbackFunctionC(acc, curr), {
-    return: acc[curr] ? ++acc[curr] : acc[curr] = 1, acc
+function myForEach(ar,callback) {
+    for (let i = 0; i < ar.length; i++){
+        callback(ar[i], i , ar);
+    }
+}
+
+function countBy(ar,callback){
+const occurrences = ar.reduce(function(acc, curr) {
+    return acc[curr] ? ++acc[curr] : acc[curr] = 1, acc
   }, {});
   
   console.log(occurrences);
 }
 const arr1 = [6.4, 7.3, 6.5, 6.9];
-countBy(arr1);
+
+const statistics = countBy(arr1, element => Math.floor(element));
+console.log(statistics);
+const arr2 = ['abcd', 'lmnr', 'ab', 'dddd'];
