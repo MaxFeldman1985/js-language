@@ -13,7 +13,7 @@
              res[ar[i]] = res[ar[i]] + 1;
          }
      }*/
-     const res = ar.reduce((acc,cur)=>acc[cur] ? ++acc[cur] : acc[cur] = 1, 0);
+    /* const res = ar.reduce((acc,cur)=>acc[cur] ? ++acc[cur] : acc[cur] = 1, 0);
     
     Object.entries(res).sort((e1, e2) => {
         const res = e2[1] - e1[1];
@@ -43,3 +43,10 @@ displayOccurences(ar);
 //const statistics = countBy(arr, element -> element.age)
 //result statistics -> {"25: 2, "35":1, "22":1}
   
+function countBy(ar,callbackF){
+    const occurrences = [];
+    ar.reduce(function (acc, curr) {
+        return acc[curr] ? ++acc[curr] : acc[curr] = 1, acc
+      }, {});
+    return console.log(occurrences);
+    }
