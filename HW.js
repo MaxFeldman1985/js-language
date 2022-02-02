@@ -3,7 +3,7 @@
 //refactoring of displayOccurences 
 //lines from 57 to 65 should be a separated function
 //that separated function should apply standard methods like reduce
-  //function displayOccurences(ar) {
+  function displayOccurences(ar) {
     //const res = {};
     /*for(let i = 0; i < ar.length; i++){
          if(res[ar[i]] === undefined){
@@ -13,7 +13,7 @@
              res[ar[i]] = res[ar[i]] + 1;
          }
      }*/
-    /* const res = ar.reduce((acc,cur)=>acc[cur] ? ++acc[cur] : acc[cur] = 1, 0);
+     const res = getStatObj(ar);
     
     Object.entries(res).sort((e1, e2) => {
         const res = e2[1] - e1[1];
@@ -23,6 +23,13 @@
 }
 const ar = ["lmn", "Yaichko" , "d", "lmn", "a" ,"lmn", "a","d"];
 displayOccurences(ar);
+
+function getStatObj(ar){
+    return ar.reduce((res,cur) => {
+    res[cur] = res[cur] === undefined ? 1 : res[cur] + 1;
+return res;
+},{})
+}
   
   /**********************************************task 2 */
 //write useful function countBy(ar,callbackFunction) that returns object with
@@ -43,21 +50,14 @@ displayOccurences(ar);
 //const statistics = countBy(arr, element -> element.age)
 //result statistics -> {"25: 2, "35":1, "22":1}
   
-function myForEach(ar,callback) {
-    for (let i = 0; i < ar.length; i++){
-        callback(ar[i], i , ar);
-    }
-}
-
-function countBy(ar,callback){
-const occurrences = ar.reduce(function(acc, curr) {
-    return acc[curr] ? ++acc[curr] : acc[curr] = 1, acc
-  }, {});
-  
-  console.log(occurrences);
+function countBy(ar,callbackC){
+ar = ar.map(callbackC);
+return getStatObj(ar);
 }
 const arr1 = [6.4, 7.3, 6.5, 6.9];
 
 const statistics = countBy(arr1, element => Math.floor(element));
 console.log(statistics);
 const arr2 = ['abcd', 'lmnr', 'ab', 'dddd'];
+statistics = countBy(arr2,element => element.length);
+console.log(statistics);
