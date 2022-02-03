@@ -63,13 +63,13 @@ d.resolve('hello');
 //write method set that sets a given value at a given index
 //myArray.setValue(value) - sets new value in all elements of myArray
 //Example:
-/*const myArray = new MyArray(10);
+const myArray = new MyArray(10);
 console.log(myArray.get(100)); //display out 10
 myArray.set(100, 500) //sets 500 at index 100
 console.log(myArray.get(200)); //display out 10
 console.log(myArray.get(100)) // display out 500
 myArray.setValue(300);
-console.log(myArray.get(100)) //display out 300*/
+console.log(myArray.get(100)) //display out 300
 
 /************************************************************************* */
 Array.prototype.filter = function(callbackPredicate){
@@ -80,3 +80,10 @@ Array.prototype.filter = function(callbackPredicate){
 const ar = [1,2,4,5,100];
 ar.filter(n => n % 2 === 0).forEach(n => console.log(n));
 
+/************************************************************************************** */
+//how to get array's length
+const arr1 = [];
+arr1[1000000000] = 10;
+console.log(`length of arr1 is ${arr1.length}`);
+arr1.length = 0;
+console.log(arr1[10000000]); //undifined
