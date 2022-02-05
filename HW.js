@@ -66,6 +66,13 @@ class WageEmployee extends Employee {
 }
 console.log(`${persons}`);
 
+function getStatObj(ar){
+    return ar.reduce((res,cur) => {
+    res[cur] = res[cur] === undefined ? 1 : res[cur] + 1;
+return res;
+},{})
+}
+
 function countOfPersonType(persons, type){
     //return count of persons of the given type
     //countOfPersonType(persons, 'WageEmployee') ---> 1
