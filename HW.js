@@ -74,6 +74,9 @@ return res;
 }
 
 function countOfPersonType(persons, type){
+    return persons.reduce((res, cur)) => {
+        
+    }
     //return count of persons of the given type
     //countOfPersonType(persons, 'WageEmployee') ---> 1
 }
