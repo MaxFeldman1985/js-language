@@ -72,14 +72,13 @@ function getStatObj(ar){
 return res;
 },{})
 }
-
 function countOfPersonType(persons, type){
-    return persons.reduce((res, cur)) => {
-        
+    persons = persons.map(type);
+    return getStatObj(persons);    
     }
-    //return count of persons of the given type
+    //return count of person s of the given type
     //countOfPersonType(persons, 'WageEmployee') ---> 1
-}
+statistic = countOfPersonType (persons, element => element)
 function computeSalaryBudget(persons){
     //return total salary of all employee objects in the given array
     //Example:
