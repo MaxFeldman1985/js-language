@@ -93,3 +93,6 @@ function countChildrenKindergarten(persons, kindergarten){
 const type = "WageEmployee";
 const kindergarten = "Shalom";
 console.log(`function countChildrenKindergarten ${kindergarten} expected ${expected}`)
+function testOutput(fun, expected){
+    console.log(`function ${fun.name}; expected result: ${expected} ; actual result: ${fun} `)
+}
