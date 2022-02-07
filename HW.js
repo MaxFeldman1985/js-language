@@ -17,13 +17,7 @@ class Person{
   }
 }
 
-const persons = [
-    new Child(100, 'Gavrik', 'Shalom'),
-    new Child(101, 'Olya', 'BokerOr'),
-    new Child(102, 'Klaus' ,'Shalom'),
-    new Employee(103, 'Vasya', 1000),
-    new WageEmployee(104, 'Terens', 1000, 10, 100)
-];
+
 
 class Employee extends Person {
     #salary;
@@ -64,28 +58,38 @@ class WageEmployee extends Employee {
     }
     
 }
-console.log(`${persons}`);
 
-function getStatObj(ar){
-    return ar.reduce((res,cur) => {
-    res[cur] = res[cur] === undefined ? 1 : res[cur] + 1;
-return res;
-},{})
-}
+const persons = [
+    new Child(100, 'Gavrik', 'Shalom'),
+    new Child(101, 'Olya', 'BokerOr'),
+    new Child(102, 'Klaus' ,'Shalom'),
+    new Employee(103, 'Vasya', 1000),
+    new WageEmployee(104, 'Terens', 1000, 10, 100)
+];
+
+
 function countOfPersonType(persons, type){
-    persons = persons.map(type);
-    return getStatObj(persons);    
-    }
+return persons.filter(n => n.constructor.name === type).length;
+}
+console.log(countOfPersonType(persons, 'WageEmployee'))
     //return count of person s of the given type
     //countOfPersonType(persons, 'WageEmployee') ---> 1
-statistic = countOfPersonType (persons, element => element)
+
 function computeSalaryBudget(persons){
     //return total salary of all employee objects in the given array
     //Example:
     //computeSalaryBudget(persons) --->3000
+    const allEmployee = persons.filter(p => !!p.computeSalary);
+    return allEmployee.reduce((res, cur) => res + cur.computeSalary(), 0);
 }
+console.log(computeSalaryBudget(persons));
 function countChildrenKindergarten(persons, kindergarten){
     // returns number of children in the given kindergarten
     //Example:
     //countChildrenKindergarten(persons, 'Shalom') ---> 1
+    const allChildren = persons.filter(n => n.constructor.name === type);
+    return allChildren.reduce((res,cur) => cur.getKindergarten() === kindergarten ? res + 1, 0)
 }
+const type = "WageEmployee";
+const kindergarten = "Shalom";
+console.log(`function countChildrenKindergarten ${kindergarten} expected ${expected}`)
