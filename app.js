@@ -24,3 +24,21 @@ function concatinate(prefix){
 const concatApp = concatinate('App - ');
 const concatMessage = concatApp('Test status: Done');
 console.log(concatMessage);
+
+class A{
+    x=123;
+    fooA(){}
+}
+class B extends A{
+    y=456;
+    fooB(){}
+}
+
+let b = new B();
+console.dir(b);
+
+let c = {xx:111}
+let d = Object.create(c)
+d.yy=222
+
+console.log(d);
